@@ -5,9 +5,9 @@ class Solution {
         int k = 0;
         while(j<nums.length){
             if(nums[i]==nums[j]){
-                // if(j==nums.length-1){
-                //     nums[k] = nums[i];
-                // }
+                if(j==nums.length-1){
+                    nums[k] = nums[i];
+                }
                 j++;
             }
             else{
@@ -16,9 +16,8 @@ class Solution {
                 i=j;
             }
         }
-        if(j==nums.length){
-            nums[k] = nums[i];
-        }
+        // nums[k] = nums[i];
+        // k++;
         return k+1;
     }
 }
