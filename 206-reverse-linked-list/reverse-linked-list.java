@@ -9,21 +9,20 @@
  * }
  */
 class Solution {
-    static ListNode solve(ListNode head , ListNode prev , ListNode curr){
-        // basecase
-        if(curr == null){
-            return prev;
-        }
-        head = curr.next; 
-        curr.next = prev;  
-        prev = curr; 
-        curr = head;    
-        return solve(head , prev, curr);
-    }
     public ListNode reverseList(ListNode head) {
-        if(head==null) return null;
-        ListNode prev = null;
-        ListNode curr = head;
-        return solve(head, prev, curr);
+        
+        // Base case
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        // Reverse the rest of the list
+        ListNode newHead = reverseList(head.next);
+
+        // Reverse current connection
+        head.next.next = head;
+        head.next = null;
+
+        return newHead;
     }
 }
