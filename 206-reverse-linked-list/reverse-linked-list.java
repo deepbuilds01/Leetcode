@@ -10,19 +10,20 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        
-        // Base case
-        if (head == null || head.next == null) {
+        if(head == null || head.next==null){
             return head;
         }
 
-        // Reverse the rest of the list
-        ListNode newHead = reverseList(head.next);
+        ListNode prev = null;
+        ListNode curr = head;
 
-        // Reverse current connection
-        head.next.next = head;
-        head.next = null;
-
-        return newHead;
+        while(curr!=null){
+            head = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = head;
+        }
+        return prev;
+       
     }
 }
