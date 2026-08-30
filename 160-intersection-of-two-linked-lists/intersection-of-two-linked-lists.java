@@ -18,13 +18,13 @@ public class Solution {
         while (first != second) {
 
             if (first == null) {
-                first = headB;
+                first = headA;
             } else {
                 first = first.next;
             }
 
             if (second == null) {
-                second = headA;
+                second = headB;
             } else {
                 second = second.next;
             }
