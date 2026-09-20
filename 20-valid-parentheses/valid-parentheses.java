@@ -1,29 +1,24 @@
-
-
-
 class Solution {
     public boolean isValid(String s) {
-        StringBuilder ans = new StringBuilder();
-
+        Stack<Character> ans = new Stack<>(); 
         for(int i=0; i<s.length(); i++){
             char ch = s.charAt(i);
             if(ch == '(' || ch == '[' || ch == '{'){
-                ans.append(ch);
+                ans.push(ch);
             }else{
-                if(ans.length() == 0){
+                if(ans.isEmpty()){
                     return false;
                 }
-                char ansch = ans.charAt(ans.length()-1);
-                if( ansch == '[' && ch == ']' ||
-                    ansch == '(' && ch == ')' ||
-                    ansch == '{' && ch == '}' ){
-                        ans.deleteCharAt(ans.length()-1);
-                }
-                else{
+                char ansch = ans.peek();
+                if(ch == ')' && ansch == '(' ||
+                   ch == ']' && ansch == '[' ||
+                   ch == '}' && ansch == '{' ){
+                    ans.pop();
+                }else{
                     return false;
                 }
             }
         }
-        return ans.length() == 0;
+        return ans.isEmpty();
     }
 }
