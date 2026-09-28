@@ -6,7 +6,7 @@ class Solution {
             pq.add(stones[i]);
         }
 
-        System.out.print(pq);
+        // System.out.print(pq);
 
         while(!pq.isEmpty() && pq.size()!=1){
             int x = pq.poll();
